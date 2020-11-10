@@ -3,7 +3,7 @@ USE vitfam;
 GRANT ALL ON vitfam.* TO 'fam'@'localhost' IDENTIFIED BY 'fam123';
 GRANT ALL ON vitfam.* TO 'fam'@'127.0.0.1' IDENTIFIED BY 'fam123';
 CREATE table temp(
-    process varchar(32) NULL,
+    process varchar(32) NULL PRIMARY KEY,
     email varchar(50) NULL,
     pass varchar(32) NULL
     );
