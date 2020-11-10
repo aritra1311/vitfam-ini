@@ -4,6 +4,7 @@ if(!isset($_SESSION['user']))
 {
     $_SESSION['user']=0;
 }
+require_once "pdo.php";
 require_once "head.php";
 $msg="";
 if(isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['repass']))
@@ -56,7 +57,7 @@ if(isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['repass']))
     <div class="login-card" style="background-color:black;"><img class="profile-img-card" src="assets/img/avatar_2x.png" />
     <p class="profile-name-card"></p>
     <form class="form-signin" method="post">
-        <?php if($msg!=""){echo("<p>$msg</p>");} ?>
+        <?php if($msg!=""){echo("<p style=\"color:white;\">$msg</p>");} ?>
         <span class="reauth-email"></span>
         <input type="email" class="form-control" id="inputEmail" required placeholder="Email address" name="email" autofocus />
         <input type="password" class="form-control" id="inputPassword" name="pass" required placeholder="Password" />

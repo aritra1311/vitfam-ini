@@ -38,13 +38,13 @@ if(isset($_POST['email']))
     }
   }
 }
-if(isset($_POST['email']) && isset($_POST['paswword']) && $blocked==FALSE)
+if(isset($_POST['email']) && isset($_POST['password']) && $blocked==FALSE)
 {
   $sql="SELECT email FROM users WHERE BINARY email=:e AND BINARY pass=:p";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(
 		    ':e'=> $_POST['email'],
-        ':p'=> $_POST['paswword'],
+        ':p'=> hash('md5', $_POST['password']),
 	));
   $rows = $stmt->fetch(PDO::FETCH_ASSOC);
   if($rows===FALSE)
@@ -119,7 +119,7 @@ if(isset($_POST['email']) && isset($_POST['paswword']) && $blocked==FALSE)
       $stmt = $pdo->prepare($sql);
       $stmt->execute(array(
     		':e'=> $_POST['email'],
-        ':p'=> $_POST['paswword'],
+        ':p'=> hash('md5',$_POST['password']),
     	));
       $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
       foreach ( $rows as $row ) {
@@ -143,6 +143,7 @@ require_once "head.php";
         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" /></div>
         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
        
-        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Login In</button></div></form>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Login</button></div>
+      </form>
 </div>
 <?php require_once "footer.php"; ?>

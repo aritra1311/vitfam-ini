@@ -27,18 +27,10 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item" role="presentation" style="opacity: 1;"></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link border-dark" href="login.php"><strong>Login</strong></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link border rounded-0 border-secondary" href="signup.php"><strong>Sign Up</strong></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="event.php"><strong>Event</strong></a></li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item" role="presentation"></li>
-                        <li class="nav-item" role="presentation"></li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item" role="presentation"> <?php if($_SESSION['user']!=0){echo("<a class=\"nav-link\" href=\"myaccount.php\"><strong>My Account</strong></a>");} ?></li>
-                        <li class="nav-item" role="presentation"></li>
-                        <li class="nav-item" role="presentation"></li>
+                        <?php if($_SESSION['user']==0){echo("<li class=\"nav-item\" role=\"presentation\">  <a class=\"nav-link\" href=\"login.php\"><strong>Log In</strong></a></li>");} ?>
+                        <?php if($_SESSION['user']==0){echo("<li class=\"nav-item\" role=\"presentation\">  <a class=\"nav-link\" href=\"signup.php\"><strong>Sign Up</strong></a></li>");} ?>
+                        <?php if($_SESSION['user']!=0){echo("<li class=\"nav-item\" role=\"presentation\">  <a class=\"nav-link\" href=\"myaccount.php\"><strong>My Account</strong></a></li>");} ?>
+                        <?php if($_SESSION['user']!=0){echo("<li class=\"nav-item\" role=\"presentation\">  <a class=\"nav-link\" href=\"logout.php\"><strong>Log Out</strong></a></li>");} ?>
                     </ul>
                 </div>
             </div>
